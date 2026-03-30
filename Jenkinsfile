@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_CREDENTIALS = credentials('dockerhub-credentials')
         IMAGE_NAME = "gp97dot/capstone2-app"
         K8S_MASTER = "ubuntu@3.110.186.8"
         SSH_KEY = "/var/lib/jenkins/.ssh/capstone"
@@ -30,7 +29,6 @@ pipeline {
             steps {
                 sh """
                     ssh -i ${SSH_KEY} -o StrictHostKeyChecking=no ${K8S_MASTER} '
-                    echo ${DOCKER_HUB_CREDENTIALS_PSW} | docker login -u ${DOCKER_HUB_CREDENTIALS_USR} --password-stdin &&
                     docker push ${IMAGE_NAME}:${BUILD_NUMBER} &&
                     docker logout'
                 """
