@@ -29,8 +29,7 @@ pipeline {
             steps {
                 sh """
                     ssh -i ${SSH_KEY} -o StrictHostKeyChecking=no ${K8S_MASTER} '
-                    docker push ${IMAGE_NAME}:${BUILD_NUMBER} &&
-                    docker logout'
+                    docker push ${IMAGE_NAME}:${BUILD_NUMBER}'
                 """
             }
         }
