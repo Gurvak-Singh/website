@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Git Clone') {
             steps {
-                git branch: 'master', url: 'https://github.com/<your-github-username>/website.git'
+                git branch: 'master', url: 'https://github.com/Gurvak-Singh/website.git'
             }
         }
 
